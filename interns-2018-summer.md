@@ -1,4 +1,4 @@
-## Rules for US team
+## Instructions
 
 ---
 
