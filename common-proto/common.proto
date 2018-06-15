@@ -1,0 +1,92 @@
+syntax = "proto2";
+
+package common;
+
+message CommonMessage {
+    required Head head = 1;
+
+    required Body body = 2;
+};
+
+message Head {
+    // version
+    required uint32 version = 1;
+    // version check flag
+    required uint32 magic_flag = 2 [default = 0x12340987];
+    // random number 
+    required uint32 random_num = 3;
+    // flow number
+    required uint32 flow_no = 4;
+    // session number
+    required string session_no = 5;
+    // message type
+    required int32 message_type = 6;
+    // worker index
+    required int32 worker_index = 7;
+	//deprecated
+    optional bool tint_flag = 8;
+	
+    required uint32 source_entity = 9;
+    optional uint32 dest_entity = 11;
+    optional string call_purpose = 13;
+    optional bytes access_token = 14;
+    optional bytes reserved = 15;
+    optional string client_ip = 20;
+    optional string target_ip = 30;               
+    optional uint32 target_port = 40;
+	//tracing id
+	optional string trace_id = 50;
+};
+
+message Body {
+    optional SimpleResponse simple_response = 1;
+    optional HeartBeatRequest heart_beat_request = 3;
+    optional HeartBeatResponse heart_beat_response = 5;
+    extensions 100 to max;
+};
+
+enum MessageType {
+    SIMPLE_RESPONSE = 10;
+    HEART_BEAT_REQUEST = 12;
+    HEART_BEAT_RESPONSE = 13;
+};
+
+message IpPortPair {
+    required uint32 ip = 1;
+    required uint32 port = 2;
+};
+
+message ResponseCode {
+    required int32 retcode = 1;
+    optional string error_message = 2; 
+};
+
+message IpAddress {
+    required string ip = 1;            
+    required uint32 type = 2;    
+};
+
+message SimpleResponse {
+    required ResponseCode rc = 1;
+};
+
+message HeartBeatRequest {
+    repeated bytes payload = 1;
+};
+
+message HeartBeatResponse {
+    required ResponseCode rc = 1;
+    repeated bytes payload = 2;
+};
+
+message InternalHead {
+    required int32 fd = 10;
+    required uint32 peer_addr = 20;
+    required int32 peer_port = 30;
+    required uint32 sock_addr = 40;
+    required int32 sock_port = 50;
+};
+
+enum ResourceType {
+    RESOURCE_TYPE_BP = 1;
+}

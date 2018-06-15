@@ -11,7 +11,7 @@ golang version >= 1.10
 ```
  Development:
 
- 1. https://github.com/jollyburger/xframe (for HTTP-API or Protobuf backend) preferred
+ 1. https://github.com/jollyburger/xframe (for HTTP-API or Protobuf backend, examples: refer to xframe/examples) preferred
  2. https://github.com/grpc/grpc-go (for Protobuf backend) preferred
  3. https://github.com/gin-gonic/gin (for HTTP-API)
  4. others (beego/go-kit/...)
@@ -89,7 +89,7 @@ golang version >= 1.10
 
 - Version control
 	- refer to https://semver.org/
-	- version example Va.b.c
+	- version example v${a}.${b}.${c}
 
 - Git management
 	- command: git commit -seav
@@ -97,4 +97,4 @@ golang version >= 1.10
 			- new features
 			- bug fix
 			- optimization
-	- after commit, please git tag 
+	- after commitment, please using git tag 

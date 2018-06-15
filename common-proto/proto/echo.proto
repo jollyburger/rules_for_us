@@ -1,0 +1,41 @@
+syntax = "proto2";
+
+package common.echo;
+
+import "common.proto";
+
+enum MessageType {
+	option allow_alias = true;
+	
+	BEGINNING_ID = 2000;
+
+	ECHO_REQUEST = 2000;
+	ECHO_RESPONSE = 2001;
+
+	ECHO_TWO_REQUEST = 2002;
+	ECHO_TWO_RESPONSE = 2003;
+}
+
+extend vpgame.Body {
+	optional EchoRequest echo_request = 2000;
+	optional EchoResponse echo_response = 2001;
+
+	optional EchoTwoRequest echo_two_request = 2002;
+	optional EchoTwoResponse echo_two_response = 2003;
+}
+
+message EchoRequest {
+	required string echo = 10;
+}
+
+message EchoResponse {
+	required ResponseCode rc = 10;
+}
+
+message EchoTwoRequest {
+	required string echo = 10;
+}
+
+message EchoTwoResponse {
+	required ResponseCode rc = 10;
+}
