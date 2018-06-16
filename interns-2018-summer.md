@@ -36,7 +36,7 @@ golang version >= 1.10
  	- govendor init
 	- govendor update +external
 
- Directory structure
+ Directory structure(initilization tool please refer to xframe/cmd/xframe.go, go build xframe.go)
 
  1. main.go (main entry)
  2. app/ (config structure)
